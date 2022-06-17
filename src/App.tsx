@@ -1,26 +1,29 @@
+import store from './stores/todo'
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { observer } from 'mobx-react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Todo from './pages/Todo';
+import SimpleCount from './pages/SimpleCount';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
+          <div style={{display:"flex"}}>
+            <Link to="/todo"><strong style={{fontSize:"30px"}}>TodoList</strong></Link>
+            <Link to="/simplecount" style={{marginLeft:"10px"}}><strong style={{fontSize:"30px"}}>SimpleCount</strong></Link>
+          </div>
+          <div style={{marginTop:"10px"}}>
+            <Routes>
+              <Route path="/todo" element={<Todo/>}/>
+              <Route path="/simplecount" element={<SimpleCount/>}/>
+            </Routes>
+          </div>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
