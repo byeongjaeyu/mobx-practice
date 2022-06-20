@@ -1,13 +1,17 @@
 import { action, makeObservable, observable } from "mobx";
 import { Number } from "./count";
 
+export interface NumberandType extends Number {
+    type: string
+}
+
 const increaseNumber = (number:Number["number"],additionalNumber:Number["number"]) => number + additionalNumber;
 
 const decreaseNumber = (number:Number["number"],additionalNumber:Number["number"]) => number - additionalNumber;
 
 class Store {
-    number: Number["number"] = 0;
-    additionalNumber: Number["number"] = 0;
+    number: NumberandType["number"] = 0;
+    additionalNumber: NumberandType["number"] = 0;
 
     constructor() {
         makeObservable(this,{
@@ -18,7 +22,7 @@ class Store {
         })
     };
 
-    increaseNumber(type:string) {
+    increaseNumber(type:NumberandType["type"]) {
         if(type==="default"){
             this.number = increaseNumber(this.number, this.additionalNumber);  
             this.additionalNumber = 0;        
@@ -27,7 +31,7 @@ class Store {
         }
     }
 
-    decreaseNumber(type:string) {
+    decreaseNumber(type:NumberandType["type"]) {
         if(type==="default"){
             this.number = decreaseNumber(this.number, this.additionalNumber);          
             this.additionalNumber = 0;   
