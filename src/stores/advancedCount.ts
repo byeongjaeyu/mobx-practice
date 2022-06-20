@@ -39,6 +39,11 @@ class Store {
             this.additionalNumber = decreaseNumber(this.additionalNumber, 1);
         }
     }
+
+    reset() {
+        this.number = 0;
+        this.additionalNumber = 0;
+    }
 }
 
 const store = new Store();

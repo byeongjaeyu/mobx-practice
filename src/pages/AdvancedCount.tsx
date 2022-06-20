@@ -12,6 +12,8 @@ const AdvancedCount = () => {
             <br/>
             <button onClick={()=>{store.increaseNumber("additional")}}>AdditionalNumber +</button>
             <button onClick={()=>{store.decreaseNumber("additional")}}>AdditionalNumber -</button>
+            <hr/>
+            <button onClick={()=>{store.reset()}}>초기화</button>
         </div>
     )
 }
