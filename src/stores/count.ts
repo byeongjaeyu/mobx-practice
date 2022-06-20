@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { action, computed, makeAutoObservable, makeObservable, observable } from "mobx";
 
 export interface Number {
     number: number;
@@ -12,7 +12,13 @@ class Store {
     number: Number["number"] = 0;
 
     constructor() {
-        makeAutoObservable(this);
+        // makeAutoObservable(this);
+        makeObservable(this,{
+            number: observable,
+            increase: action,
+            decrease: action,
+            double: computed,
+        })
     };
 
     increase() {
@@ -21,6 +27,10 @@ class Store {
 
     decrease() {
         this.number = decrease(this.number)
+    }
+
+    get double() {
+        return this.number ** 2;
     }
 }
 

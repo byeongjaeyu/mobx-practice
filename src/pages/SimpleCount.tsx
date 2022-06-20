@@ -5,6 +5,8 @@ const SimpleCount = () => {
         <div>
             <strong style={{fontSize:'30px'}}>{store.number}</strong>
             <br/>
+            <strong>square value = {store.double}</strong>
+            <br/>
             <button onClick={()=>{store.increase()}}>+</button>
             <button onClick={()=>{store.decrease()}}>-</button>
         </div>
